@@ -1,0 +1,146 @@
+/* Modernized User Input Page */
+.user-input-container {
+  background: white;
+  
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+h2.new-scan {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input Sections */
+.input-sections {
+  display: flex;
+  
+  gap: 20px;
+}
+
+/* Input Boxes - Paper Style */
+.input-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  text-align: left;
+  width: 100%;
+  min-height: 300px;
+  
+}
+
+.input-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Resume & Job Description as Vertical Paper */
+.resume-section, .job-description-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 400px;
+  border: 1px solid #ddd;
+}
+
+/* File Input */
+input[type="file"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: none;
+}
+
+/* Scan Button */
+.scan-button {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.scan-button:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+}
+
+/* Loading Popup */
+.loading-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.loading-popup p {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(135deg, #007bff, #00d2ff);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-input-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input[type="file"],
+  textarea {
+    font-size: 14px;
+  }
+}
