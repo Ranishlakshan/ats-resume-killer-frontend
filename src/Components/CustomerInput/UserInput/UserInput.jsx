@@ -8,6 +8,7 @@ import "./UserInput.css";
 // Firebase Auth Imports
 import { auth, provider } from "../../../firebase"; // Adjust path as needed
 import { signInWithPopup } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const UserInput = () => {
   const dispatch = useDispatch();

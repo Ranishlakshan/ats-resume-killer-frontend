@@ -9,9 +9,12 @@ import Contact from './pages/Contact.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import ScanResult from './pages/ScanResult.jsx';
 import UserOutput from './Components/Customeroutput/UserOutput/UserOutput.jsx';
+import CoverLetter from './Components/CoverLetterComponent/CoverLetterComponent.jsx';
 import { Provider } from 'react-redux';  // Import Provider
 import Store from './store/store';  // Import the store
 import Pricing from "./../src/Components/pricing/pricing.jsx";
+import PaymentPage from "./../src/Components/pricing/PaymentPage.jsx";
+
 
 // Set up your router
 const router = createBrowserRouter([
@@ -42,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/pricing",
     element: <Pricing />,
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />,
+  },
+  {
+    path: "/cover-letter",
+    element: <CoverLetter />,
   },
 ]);
 

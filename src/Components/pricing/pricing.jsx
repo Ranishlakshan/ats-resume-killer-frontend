@@ -1,7 +1,11 @@
 import React from "react";
 import "./pricing.css";
+import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="pricing-container">
       <h2 className="title">Plans & Pricing</h2>
@@ -16,18 +20,18 @@ const Pricing = () => {
           <button className="current-plan">Current Plan</button>
           <p className="note">Free Forever</p>
         </div>
-        <div className="plan premium-quarterly">
+        {/* <div className="plan premium-quarterly">
           <h3>Premium Quarterly</h3>
-          <p className="price">$11.62<span>/month</span></p>
-          <p className="billing">$34.86 Billed Every 3 Months</p>
+          <p className="price">$19.99<span>/month</span></p>
+          <p className="billing">$54.99 Billed Every 3 Months</p>
           <button className="subscribe">Subscribe</button>
-          <p className="save">Save $9.99</p>
-        </div>
+          <p className="save">Save $4.98</p>
+        </div> */}
         <div className="plan premium-monthly">
           <h3>Premium Monthly</h3>
-          <p className="price">$14.95<span>/month</span></p>
-          <button className="subscribe">Subscribe</button>
-          <p className="billing">$14.95 Billed Every Month</p>
+          <p className="price">$24.99<span>/month</span></p>
+          <button className="subscribe" onClick={() => navigate("/payment")}>Subscribe</button>
+          <p className="billing">$24.99 Billed Every Month</p>
         </div>
       </div>
       <div className="features-table">

@@ -1,0 +1,31 @@
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stripe-input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  background: #fafafa;
+  margin-top: 7px;
+}
+
+.checkout-form button {
+  background: #6753ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.checkout-form button:disabled {
+  background: #bbb;
+  cursor: not-allowed;
+}

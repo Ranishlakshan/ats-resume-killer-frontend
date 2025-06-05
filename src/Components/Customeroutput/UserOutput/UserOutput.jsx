@@ -167,8 +167,11 @@ const UserOutput = () => {
 
     // Function to wrap matched words/phrases with span
     const highlightWords = (words, className) => {
-      words.forEach((phrase) => {
-        const regex = new RegExp(`\\b${phrase}\\b`, "gi"); // Case-insensitive matching
+      // Force `words` to always be an array, even if it's not.
+      (Array.isArray(words) ? words : [words]).forEach((phrase) => {
+        // Guard against empty/null/undefined values inside
+        if (!phrase) return;
+        const regex = new RegExp(`\\b${phrase}\\b`, "gi");
         highlightedText = highlightedText.replace(regex, (match) =>
           `<span class="${className}">${match}</span>`
         );

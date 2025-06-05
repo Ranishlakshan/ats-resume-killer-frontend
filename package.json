@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
+    "@stripe/react-stripe-js": "^3.7.0",
+    "@stripe/stripe-js": "^7.3.1",
     "axios": "^1.8.4",
-    "firebase": "^11.8.1",
+    "firebase": "^11.9.0",
+    "pdfjs-dist": "^5.3.31",
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "^18.3.1",

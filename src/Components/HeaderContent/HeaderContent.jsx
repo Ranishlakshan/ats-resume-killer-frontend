@@ -7,6 +7,8 @@ function HeaderContent() {
     <header className="header-container">
       <div className="header-logo">Header Logo</div>
       <nav className="navbar">
+        <MenuLink linkname="Generate a Cover Letters" url="/cover-letter" />
+        <MenuLink linkname="Pricing & Plans" url="/" />
         <MenuLink linkname="Home" url="/" />
         <MenuLink linkname="Blog" url="/blog" />
         <MenuLink linkname="About Us" url="/about" />
