@@ -1,71 +1,48 @@
 import React from "react";
 import "./pricing.css";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
+import HeaderContent from "../HeaderContent/HeaderContent";
+import Footer from "../Footer/Footer";
 
 const Pricing = () => {
-
   const navigate = useNavigate();
 
   return (
-    <div className="pricing-container">
-      <h2 className="title">Plans & Pricing</h2>
-      <p className="subtitle">
-        Supercharge your job search with our premium subscription, available on a
-        monthly or quarterly basis.
-      </p>
-      <div className="plans">
-        <div className="plan free">
-          <h3>Free</h3>
-          <p className="price">$0<span>/month</span></p>
-          <button className="current-plan">Current Plan</button>
-          <p className="note">Free Forever</p>
-        </div>
-        {/* <div className="plan premium-quarterly">
-          <h3>Premium Quarterly</h3>
-          <p className="price">$19.99<span>/month</span></p>
-          <p className="billing">$54.99 Billed Every 3 Months</p>
-          <button className="subscribe">Subscribe</button>
-          <p className="save">Save $4.98</p>
-        </div> */}
-        <div className="plan premium-monthly">
-          <h3>Premium Monthly</h3>
-          <p className="price">$24.99<span>/month</span></p>
-          <button className="subscribe" onClick={() => navigate("/payment")}>Subscribe</button>
-          <p className="billing">$24.99 Billed Every Month</p>
-        </div>
+    <div>
+      <HeaderContent />
+      {/* Flex layout: sidebar + main */}
+      <div className="pricing-page-flex">
+        <Sidebar />
+        <main className="pricing-container">
+          <div className="pricing-hero">
+            <div className="pricing-hero-label">Pricing</div>
+            <h1 className="pricing-hero-title">Plans that support<br />your growth</h1>
+            <p className="pricing-hero-desc">
+              Our pricing plans provide the necessary features and resources to support your job search’s continued growth and success.
+            </p>
+          </div>
+          <div className="plans">
+            {/* ...your plans here... */}
+            <div className="plan free">
+              <h3>Free</h3>
+              <p className="price">$0<span>/month</span></p>
+              <button className="current-plan">Current Plan</button>
+              <p className="note">Free Forever</p>
+            </div>
+            <div className="plan premium-monthly">
+              <h3>Premium Monthly</h3>
+              <p className="price">$24.99<span>/month</span></p>
+              <button className="subscribe" onClick={() => navigate("/payment")}>Subscribe</button>
+              <p className="billing">$24.99 Billed Every Month</p>
+            </div>
+          </div>
+          <div className="features-table">
+            {/* ...your features table here... */}
+          </div>
+        </main>
       </div>
-      <div className="features-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Features</th>
-              <th>Free</th>
-              <th>Premium Quarterly</th>
-              <th>Premium Monthly</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Job Match Scans</td>
-              <td>2/Week</td>
-              <td className="highlight">Unlimited</td>
-              <td className="highlight">Unlimited</td>
-            </tr>
-            <tr>
-              <td>Scan History</td>
-              <td>10</td>
-              <td className="highlight">Unlimited</td>
-              <td className="highlight">Unlimited</td>
-            </tr>
-            <tr>
-              <td>Job Board Tracker</td>
-              <td>✔</td>
-              <td>✔</td>
-              <td>✔</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Footer />
     </div>
   );
 };

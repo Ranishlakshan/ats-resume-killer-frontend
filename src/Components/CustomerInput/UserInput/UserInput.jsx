@@ -125,13 +125,26 @@ const UserInput = () => {
 
 
   return (
-    <div className="user-input-container">
-      <h2 className="new-scan">New Scan</h2>
+    <div className="user-input-container" id="resume-scan-section">
+      <img
+        src="/process.png"
+        alt="Process steps"
+        className="process-image"
+        style={{
+          display: "block",
+          margin: "0 auto 24px auto",
+          maxWidth: "850px",
+          width: "100%",
+          height: "auto"
+        }}
+      />
       <div className="input-sections">
         <div className="input-box">
           <h3>Resume (PDF)</h3>
-          <input type="file" accept=".pdf" onChange={handleFileChange} disabled={loading} />
-          {resumeFileName && <p>{resumeFileName}</p>}
+          <div className="file-input-wrapper">
+            <input type="file" accept=".pdf" onChange={handleFileChange} disabled={loading} />
+            {resumeFileName && <p>{resumeFileName}</p>}
+          </div>
         </div>
 
         <div className="input-box">
@@ -146,9 +159,11 @@ const UserInput = () => {
       </div>
 
       <div className="bottom-section">
-        <button className="scan-button" onClick={handleScan} disabled={loading}>
-          {loading ? "Scanning..." : "Scan"}
-        </button>
+        <div className="bottom-section">
+          <button className="scan-button" onClick={handleScan} disabled={loading}>
+            {loading ? "Scanning..." : "Scan"}
+          </button>
+        </div>
       </div>
 
       {/* Only show the progress bar pop-up during loading */}

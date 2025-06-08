@@ -7,14 +7,15 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="logo">Your Logo</div>
+      <div className="logo">
+        
+      </div>
       <ul className="nav-list">
         <li onClick={() => navigate("/")}>New Scan</li>
         <li onClick={() => navigate("/user-output")}>Scan Result</li>
         <li onClick={() => navigate("/cover-letter")}>Cover Letters</li>
         <li onClick={() => navigate("/resumes")}>Resumes</li>
         <li onClick={() => navigate("/pricing")}>Pricing & Plans</li>
-        <li className="new-scan" onClick={() => navigate("/new-scan")}>+ New Scan</li>
       </ul>
     </div>
   );

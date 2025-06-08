@@ -1,17 +1,211 @@
-/* Additional container styling for ParentComponent */
-.resume-container {
-    padding-top: 30px;
-    margin-inline: 20px;
-    /* display: flex; */
-     /* Allow wrapping on smaller screens */
-  }
-
-
-.welcome-note {
-  padding-top: 25px;
-  margin-inline: 25px;
-  text-align: left;
+.main-wrapper {
+  background: #fff;
 }
-  
-  
-  
+
+.cover-image-wrapper {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  min-height: 0;
+  padding: 0;
+  position: relative;
+}
+
+.cover-image {
+  width: 100vw;
+  max-width: 1920px;
+  object-fit: cover;
+  display: block;
+  margin-top: -30px;
+}
+
+/* Overlay styles */
+.cover-overlay {
+  position: absolute;
+  top: 15%;
+  left: 7%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cover-title {
+  color: #212121;
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  max-width: 440px;
+  line-height: 1.12;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.45);
+}
+
+/* Tagline styling */
+.cover-tagline {
+  color: #506080;
+  /* background: rgba(220, 230, 255, 0.57); subtle blue shade */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 23px;
+  padding: 10px 16px 10px 0;
+  border-radius: 6px;
+  max-width: 430px;
+  box-shadow: 0 2px 8px rgba(185,210,255,0.10);
+}
+
+/* Button styling remains the same */
+.cover-btn {
+  background-color: #0b8aee;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 13px 36px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(11,138,238,0.07);
+  transition: background 0.22s;
+}
+
+.cover-btn:hover {
+  background-color: #0366b6;
+}
+
+
+.feature-image-wrapper {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  min-height: 0;
+  padding: 0;
+  position: relative;
+  margin-bottom: 28px; /* spacing before next section */
+}
+
+.feature-image {
+  width: 100vw;
+  max-width: 1920px;
+  object-fit: cover;
+  display: block;
+  /* Remove any negative margin-top here! */
+}
+
+/* Overlay on right side */
+.feature-overlay {
+  position: absolute;
+  /* Center vertically */
+  top: 50%;
+  right: 7%;  /* right-aligned */
+  transform: translateY(-50%);
+  width: 40vw; /* fits nicely on right half */
+  min-width: 330px;
+  max-width: 550px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* <-- aligns text to the right */
+  text-align: left;     /* <-- aligns all inner text right */
+}
+
+
+.feature-title {
+  color: #1a1a1a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 13px;
+  line-height: 1.12;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.32);
+}
+
+.feature-tagline {
+  color: #4d627a;
+  font-size: 1.03rem;
+  line-height: 1.55;
+  /* background: rgba(230,240,255,0.56); subtle blue shade */
+  border-radius: 7px;
+  padding: 11px 18px 11px 10px;
+  box-shadow: 0 2px 8px rgba(185,210,255,0.09);
+  font-weight: 400;
+}
+
+
+.robot-image-wrapper {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  position: relative;
+  margin-bottom: 32px;
+  padding: 38px 0; /* Add padding to keep space around */
+}
+
+.robot-image {
+  width: 100vw;
+  max-width: 1920px;
+  object-fit: cover;
+  display: block;
+}
+
+.robot-overlay {
+  position: absolute;
+  left: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 430px;
+}
+
+.robot-title {
+  color: #222;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 13px;
+  line-height: 1.15;
+  text-shadow: 0 2px 8px rgba(255,255,255,0.20);
+}
+
+.robot-tagline {
+  color: #4d627a;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 22px;
+  background: rgba(240,248,255,0.47);
+  border-radius: 6px;
+  padding: 9px 16px 9px 0;
+  box-shadow: 0 2px 8px rgba(185,210,255,0.07);
+  font-weight: 400;
+  max-width: 410px;
+}
+
+.robot-btn {
+  background-color: #0b8aee;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 11px 28px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(11,138,238,0.07);
+  transition: background 0.22s;
+}
+
+.robot-btn:hover {
+  background-color: #0366b6;
+}
