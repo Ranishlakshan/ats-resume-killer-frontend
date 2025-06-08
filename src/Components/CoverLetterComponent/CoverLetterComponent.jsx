@@ -9,31 +9,29 @@ import {
 } from "../../store/slices/userInputSlice";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
+import HeaderContent from "../HeaderContent/HeaderContent"; // <-- Import HeaderContent
 import "./CoverLetterComponent.css";
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 function CoverLetterComponent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/"); // redirect to home, login, or wherever you want
-    };
+  };
 
+  const [copied, setCopied] = useState(false);
 
-  const [copied, setCopied] = useState(false)
-
-
-    const handleCopyCoverLetter = () => {
-      if (coverLetterResult) {
-        navigator.clipboard.writeText(coverLetterResult);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }
-    };
-
+  const handleCopyCoverLetter = () => {
+    if (coverLetterResult) {
+      navigator.clipboard.writeText(coverLetterResult);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   const {
     coverLetterFileName,
@@ -46,7 +44,6 @@ function CoverLetterComponent() {
   const [progress, setProgress] = useState(0);
   const [loadingMessage, setLoadingMessage] = useState("");
 
-  // Reset cover letter fields on mount (optional, for clean page)
   React.useEffect(() => {
     dispatch(resetCoverLetterFields());
     // eslint-disable-next-line
@@ -127,65 +124,108 @@ function CoverLetterComponent() {
   };
 
   return (
-    <div className="container">
-      <Sidebar />
-      <div className="user-output-content">
-        <div className="output-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <h2 style={{ margin: 0 }}>Upload your resume and job description to generate a Cover Letter</h2>
-          <button onClick={handleLogout} className="logout-btn">
-            Log out
-          </button>
-        </div>
+    <div>
+      {/* Header always on top */}
+      <HeaderContent /> {/* <--- Add this line at the top */}
+      <div className="coverletter-page-flex">
+        <Sidebar />
+        <div className="user-output-content">
 
-        <div className="user-input-container">
-          <h2 className="new-scan">New Cover Letter</h2>
-          <div className="input-sections">
-            <div className="input-box">
-              <h3>Resume (PDF)</h3>
-              <input type="file" accept=".pdf" onChange={handleFileChange} disabled={coverLetterLoading} />
-              {coverLetterFileName && <p>{coverLetterFileName}</p>}
-            </div>
-            <div className="input-box">
-              <h3>Job Description</h3>
-              <textarea
-                placeholder="Paste job description here..."
-                value={coverLetterJobDescription}
-                onChange={(e) => dispatch(setCoverLetterJobDescription(e.target.value))}
-                disabled={coverLetterLoading}
-              />
-            </div>
-          </div>
-          <div className="bottom-section">
-            <button className="scan-button" onClick={handleScan} disabled={coverLetterLoading}>
-              {coverLetterLoading ? "Generating..." : "Generate Cover Letter"}
+          <div className="coverletter-hero-flex">
+      <div className="coverletter-hero-text">
+        <h1>Generate the Perfect Cover Letter</h1>
+        <p>
+          Instantly create a cover letter tailored to any job. <br />
+          Just upload your resume and the job description—let AI do the rest!
+        </p>
+        <button
+          className="hero-btn"
+          onClick={() => {
+    const target = document.getElementById("cover-letter-section");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+        >
+          Get Started
+        </button>
+      </div>
+      <div className="coverletter-hero-image">
+        <img
+          src="/cover-letter-2.png"
+          alt="Cover letter illustration"
+        />
+      </div>
+    </div>
+
+        
+          {/* <div
+            className="output-header"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <h2 style={{ margin: 0 }}>
+              Upload your resume and job description to generate a Cover Letter
+            </h2>
+            <button onClick={handleLogout} className="logout-btn">
+              Log out
             </button>
-          </div>
-          {coverLetterLoading && (
-            <div className="loading-popup">
-              <div className="loading-container">
-                <p>{loadingMessage}</p>
-                <div className="progress-bar">
-                  <div className="progress" style={{ width: `${progress}%` }}></div>
+          </div> */}
+
+          <div className="user-input-container" id="cover-letter-section">
+            <h2 className="new-scan">New Cover Letter</h2>
+            <div className="input-sections">
+              <div className="input-box">
+                <h3>Resume (PDF)</h3>
+                <input type="file" accept=".pdf" onChange={handleFileChange} disabled={coverLetterLoading} />
+                {coverLetterFileName && <p>{coverLetterFileName}</p>}
+              </div>
+              <div className="input-box">
+                <h3>Job Description</h3>
+                <textarea
+                  placeholder="Paste job description here..."
+                  value={coverLetterJobDescription}
+                  onChange={(e) => dispatch(setCoverLetterJobDescription(e.target.value))}
+                  disabled={coverLetterLoading}
+                />
+              </div>
+            </div>
+            <div className="bottom-section">
+              <button className="scan-button" onClick={handleScan} disabled={coverLetterLoading}>
+                {coverLetterLoading ? "Generating..." : "Generate Cover Letter"}
+              </button>
+            </div>
+            {coverLetterLoading && (
+              <div className="loading-popup">
+                <div className="loading-container">
+                  <p>{loadingMessage}</p>
+                  <div className="progress-bar">
+                    <div className="progress" style={{ width: `${progress}%` }}></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Result Display */}
-          {coverLetterResult && (
-            <div className="cover-letter-result">
-              <div className="cover-letter-header">
-                <h3 style={{ margin: 0 }}>Generated Cover Letter:</h3>
-                <button className="copy-btn" onClick={handleCopyCoverLetter}>
-                  {copied ? "Copied!" : "Copy"}
-                </button>
+            {/* Result Display */}
+            {coverLetterResult && (
+              <div className="cover-letter-result">
+                <div className="cover-letter-header">
+                  <h3 style={{ margin: 0 }}>Generated Cover Letter:</h3>
+                  <button className="copy-btn" onClick={handleCopyCoverLetter}>
+                    {copied ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+                <pre style={{ whiteSpace: 'pre-wrap' }}>{coverLetterResult}</pre>
               </div>
-              <pre style={{ whiteSpace: 'pre-wrap' }}>{coverLetterResult}</pre>
-            </div>
-          )}
+            )}
+          </div>
+          <button onClick={() => navigate("/")}>Go Back</button>
         </div>
-        <button onClick={() => navigate("/")}>Go Back</button>
       </div>
+      <Footer/>
     </div>
   );
 }
