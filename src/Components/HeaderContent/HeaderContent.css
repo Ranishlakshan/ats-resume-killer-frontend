@@ -70,3 +70,37 @@
 }
 
 
+.subscription-badge {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 16px;
+  padding: 4px 16px;
+  margin-right: 12px;
+  position: relative;
+  bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  transition: background 0.3s, color 0.3s;
+}
+
+.subscription-badge.free {
+  background: #e8f4ff;
+  color: #007bff;
+  /* border: 1px solid #b6e0fe; */
+}
+
+.subscription-badge.premium {
+  background: linear-gradient(90deg, #f5e5ad 0%, #e9c46a 100%);
+  color: #9c6200;
+  border: 1px solid #f4d35e;
+  box-shadow: 0 1px 8px 0 #f5e5ad88;
+}
+
+@media (max-width: 700px) {
+  .subscription-badge {
+    font-size: 13px;
+    padding: 2px 10px;
+    margin-right: 6px;
+  }
+}

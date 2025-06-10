@@ -4,8 +4,8 @@
 }
 
 .profile-avatar {
-  width: 40px;
-  height: 40px;
+  max-width: 45px;
+  max-height: 45px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #e6e6e6;

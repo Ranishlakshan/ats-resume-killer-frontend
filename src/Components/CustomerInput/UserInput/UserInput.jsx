@@ -6,9 +6,9 @@ import axios from "axios";
 import "./UserInput.css";
 
 // Firebase Auth Imports
-import { auth, provider } from "../../../firebase"; // Adjust path as needed
+import { auth, provider,firestore  } from "../../../firebase"; // Adjust path as needed
 import { signInWithPopup } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const UserInput = () => {
   const dispatch = useDispatch();
@@ -31,17 +31,34 @@ const UserInput = () => {
 
   // Check sign-in status and handle login if not signed in
   const ensureGoogleSignIn = async () => {
-    if (auth.currentUser) {
-      return true; // Already signed in
+  if (auth.currentUser) {
+    return true; // Already signed in
+  }
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Reference to user doc
+    const userDocRef = doc(firestore, "users", user.uid);
+    const userDocSnap = await getDoc(userDocRef);
+
+    // Only add details if this is a first-time sign-in (doc does not exist)
+    if (!userDocSnap.exists()) {
+      await setDoc(userDocRef, {
+        email: user.email,
+        subscription: "free",
+        updatedAt: new Date().toISOString(),
+        resumeScan: 3,
+        coverLetterScan: 3,
+      });
     }
-    try {
-      await signInWithPopup(auth, provider);
-      return true;
-    } catch (error) {
-      alert("Google Sign-In was cancelled or failed. Please try again.");
-      return false;
-    }
-  };
+    return true;
+  } catch (error) {
+    console.error("Google Auth error:", error);
+  alert("Google Sign-In error: " + error.message);
+  return false;
+  }
+};
 
   const handleScan = async () => {
   // 1. Validate input fields

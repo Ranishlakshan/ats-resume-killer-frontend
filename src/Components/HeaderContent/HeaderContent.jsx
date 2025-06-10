@@ -1,20 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from '../../firebase'; // Adjust path as needed
+import { auth, db } from '../../firebase'; // db added
+import { doc, getDoc } from 'firebase/firestore'; // Firestore imports
 import MenuLink from '../MenuLink/MenuLink';
-import ProfileDropdown from './ProfileDropdown'; // <-- Import your dropdown
+import ProfileDropdown from './ProfileDropdown';
 import './HeaderContent.css';
 import { useNavigate } from 'react-router-dom';
 
 function HeaderContent() {
   const [user, setUser] = useState(null);
+  const [subscription, setSubscription] = useState(""); // For subscription info
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Listen for authentication state changes
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // currentUser is null if not signed in
-      console.log("Firebase Auth user:", currentUser); // Logs user info
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        // Fetch subscription from Firestore
+        try {
+          const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+          if (userDoc.exists()) {
+            setSubscription(userDoc.data().subscription || "free");
+          } else {
+            setSubscription("free");
+          }
+        } catch {
+          setSubscription("free");
+        }
+      } else {
+        setSubscription("");
+      }
     });
     return () => unsubscribe();
   }, []);
@@ -46,10 +61,17 @@ function HeaderContent() {
         <MenuLink linkname="About Us" url="/about" />
         <MenuLink linkname="Contact Us" url="/contact" />
       </nav>
-
       <div className="header-actions">
         {user ? (
-          <ProfileDropdown user={user} handleLogout={handleLogout} />
+          <>
+            {/* Show badge left to user icon */}
+            {subscription && (
+              <span className={`subscription-badge ${subscription}`}>
+                {subscription === "premium" ? "Premium" : "Free Version"}
+              </span>
+            )}
+            <ProfileDropdown user={user} handleLogout={handleLogout} />
+          </>
         ) : (
           <button className="hero-btn" onClick={handleSignIn}>
             Sign In
