@@ -1,0 +1,75 @@
+.ats-insight-container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 80vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.ats-insight-container h1 {
+  font-size: 2rem;
+  margin-bottom: 26px;
+  color: #16804a;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.ats-insight-container h2 {
+  margin-top: 34px;
+  font-size: 1.23rem;
+  color: #02a161;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.ats-insight-container h3 {
+  margin-top: 22px;
+  margin-bottom: 7px;
+  font-size: 1.09rem;
+  color: #16804a;
+  font-weight: 700;
+}
+
+.ats-insight-container p {
+  font-size: 1.07rem;
+  color: #222;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.ats-insight-container ul {
+  font-size: 1.07rem;
+  color: #232323;
+  margin-bottom: 16px;
+  line-height: 1.8;
+  padding-left: 22px;
+}
+
+.ats-insight-container li {
+  margin-bottom: 7px;
+}
+
+.ats-insight-container strong {
+  color: #16804a;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .ats-insight-container {
+    padding-top: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+  .ats-insight-container h1 {
+    font-size: 1.35rem;
+  }
+  .ats-insight-container h2 {
+    font-size: 1.02rem;
+  }
+}

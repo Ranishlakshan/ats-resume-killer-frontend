@@ -61,11 +61,11 @@ From analysis to action, BrewMyJob brings you the insights and documents you nee
         <div className="pf-section pf-about">
           <div className="pf-about-title">ABOUT</div>
           <ul>
-            <li><a href="#">Company</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">Investor relations</a></li>
-            <li><a href="#">Offices</a></li>
-            <li><a href="#">Careers</a></li>
+            <li><a href="/about">Company</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/suggestions">Feedback</a></li>
+            <li><a href="/questions">FAQ</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </div>
 

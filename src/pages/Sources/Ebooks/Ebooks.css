@@ -1,0 +1,40 @@
+.ebooks-container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 70vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.ebooks-container h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #16804a;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-align: left;
+}
+
+.ebooks-container p {
+  font-size: 1.1rem;
+  color: #232323;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .ebooks-container {
+    padding-top: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+  .ebooks-container h1 {
+    font-size: 1.35rem;
+  }
+}

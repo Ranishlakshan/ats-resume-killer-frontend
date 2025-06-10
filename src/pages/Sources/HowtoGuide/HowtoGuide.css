@@ -1,0 +1,69 @@
+.howto-guide-container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  max-width: 850px;
+  margin: 0 auto;
+  min-height: 80vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.howto-guide-container h1 {
+  font-size: 2rem;
+  margin-bottom: 26px;
+  color: #16804a;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.howto-guide-container h2 {
+  margin-top: 32px;
+  font-size: 1.18rem;
+  color: #02a161;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.howto-guide-container ul {
+  font-size: 1.07rem;
+  color: #232323;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  padding-left: 20px;
+}
+
+.howto-guide-container ul ul {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.howto-guide-container li {
+  margin-bottom: 7px;
+}
+
+.howto-summary {
+  margin-top: 28px;
+  font-size: 1.08rem;
+  color: #16804a;
+  background: #f5faf8;
+  border-radius: 7px;
+  padding: 13px 16px;
+  text-align: center;
+  font-weight: 700;
+  box-shadow: 0 1px 8px rgba(30,128,74,0.03);
+}
+
+@media (max-width: 700px) {
+  .howto-guide-container {
+    padding-top: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+  .howto-guide-container h1 {
+    font-size: 1.28rem;
+  }
+}
