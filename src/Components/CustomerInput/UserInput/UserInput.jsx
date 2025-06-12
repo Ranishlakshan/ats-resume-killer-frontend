@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setResumeFile, setJobDescription, setScanResult } from "../../../store/slices/userInputSlice";
 import { useNavigate } from "react-router-dom"; 
@@ -7,8 +7,8 @@ import "./UserInput.css";
 
 // Firebase Auth Imports
 import { auth, provider,firestore  } from "../../../firebase"; // Adjust path as needed
-import { signInWithPopup } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { signInWithPopup , onAuthStateChanged  } from "firebase/auth";
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 
 const UserInput = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,39 @@ const UserInput = () => {
   const [loading, setLoading] = useState(false);  
   const [progress, setProgress] = useState(0);  
   const [loadingMessage, setLoadingMessage] = useState("Uploading resume...");
+
+  //check user available scans
+  const [userSubscription, setUserSubscription] = useState(null);
+  const [freeScanCount, setFreeScanCount] = useState(null);
+
+    useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (auth.currentUser) {
+        const userDocRef = doc(firestore, "users", auth.currentUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+        if (userDocSnap.exists()) {
+          const data = userDocSnap.data();
+          setUserSubscription(data.subscription || "free");
+          setFreeScanCount(data.resumeScan ?? null);
+        }
+      }
+    };
+  
+    // Listen for auth state change, then fetch info
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchUserInfo();
+      } else {
+        setUserSubscription(null);
+        setFreeScanCount(null);
+      }
+    });
+  
+    return () => unsubscribe();
+  }, []);
+
+  //end of user free scans
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -60,6 +93,8 @@ const UserInput = () => {
   }
 };
 
+  //handlescan
+
   const handleScan = async () => {
   // 1. Validate input fields
   if (!resumeFile) {
@@ -75,7 +110,27 @@ const UserInput = () => {
   const signedIn = await ensureGoogleSignIn();
   if (!signedIn) return;
 
-  // 3. Continue with scan logic after ensuring sign-in
+  // --- 3. If free user, check and update scan count ---
+  if (userSubscription === "free") {
+    if (freeScanCount === 0) {
+      alert("You have used all your free scans.");
+      return;
+    }
+
+    // Decrement in Firestore (but never below 0)
+    const userDocRef = doc(firestore, "users", auth.currentUser.uid);
+    const newCount = Math.max(freeScanCount - 1, 0);
+
+    try {
+      await updateDoc(userDocRef, { resumeScan: newCount });
+      setFreeScanCount(newCount); // update UI immediately
+    } catch (e) {
+      alert("Failed to update your scan count. Please try again.");
+      return;
+    }
+  }
+
+  // 4. Continue with scan logic after ensuring sign-in
   setLoading(true);
   setProgress(0); // <-- reset progress at start
   let progressValue = 0;
@@ -141,6 +196,9 @@ const UserInput = () => {
 };
 
 
+  //
+
+
   return (
     <div className="user-input-container" id="resume-scan-section">
       <img
@@ -176,12 +234,23 @@ const UserInput = () => {
       </div>
 
       <div className="bottom-section">
-        <div className="bottom-section">
-          <button className="scan-button" onClick={handleScan} disabled={loading}>
-            {loading ? "Scanning..." : "Scan"}
-          </button>
-        </div>
+        {/* LEFT side: Free scan count message */}
+        {userSubscription === "free" && freeScanCount !== null ? (
+          <div className="free-scans-info" style={{ fontWeight: 500 }}>
+            Free available Scans: {freeScanCount}
+          </div>
+        ) : <div></div>}
+
+        {/* RIGHT side: Scan button */}
+        <button
+          className="scan-button"
+          onClick={handleScan}
+          disabled={loading || (userSubscription === "free" && freeScanCount === 0)}
+        >
+          {loading ? "Scanning..." : "Scan"}
+        </button>
       </div>
+
 
       {/* Only show the progress bar pop-up during loading */}
       {loading && (

@@ -435,7 +435,7 @@ const UserOutput = () => {
             </div>
           )}
         </div>
-        <button onClick={() => navigate("/")}>Go Back</button>
+        {/* <button onClick={() => navigate("/")}>Go Back</button> */}
       </div>
     </div>
       <Footer/>

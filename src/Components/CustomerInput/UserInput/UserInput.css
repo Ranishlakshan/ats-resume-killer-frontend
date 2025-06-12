@@ -100,13 +100,14 @@ textarea {
 
 .bottom-section {
   display: flex;
-  justify-content: flex-end;   /* Aligns button to the right */
+  justify-content: space-between; /* Left & right alignment */
   align-items: center;
   margin-top: 18px;
   margin-bottom: 0;
+  padding-left: 5%;
   width: 95%;
-  
 }
+
 
 
 

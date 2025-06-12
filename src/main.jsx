@@ -22,6 +22,9 @@ import Store from './store/store';  // Import the store
 import Pricing from "./../src/Components/pricing/pricing.jsx";
 import PaymentPage from "./../src/Components/pricing/PaymentPage.jsx";
 
+//services
+import LinkedinScore from './pages/Services/LinkedinScore/LinkedinScore.jsx';
+
 
 // Set up your router
 const router = createBrowserRouter([
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
   {
     path: "/how-to-guide",
     element: <HowtoGuide />,
+  },
+  {
+    path: "/linkedin-optimization",
+    element: <LinkedinScore />,
   },
 ]);
 
