@@ -1,0 +1,57 @@
+.about-us-container {
+  padding-top: 100px;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 70vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.about-us-container h1 {
+  font-size: 2.3rem;
+  margin-bottom: 18px;
+  color: #24292f;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.about-us-container h2 {
+  margin-top: 36px;
+  font-size: 1.4rem;
+  color: #16804a;
+  font-weight: 700;
+}
+
+.about-us-container p,
+.about-us-container ul {
+  font-size: 1.07rem;
+  color: #222;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.about-us-container ul {
+  padding-left: 22px;
+  margin-bottom: 0;
+}
+
+.about-section {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.about-us-container li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 700px) {
+  .about-us-container {
+    padding-top: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+}

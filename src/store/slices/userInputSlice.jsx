@@ -25,7 +25,13 @@ const initialState = {
   missingKeywords: [],
   keywordsre: [],
   noofSoftskillsre: 0,
-  email: ""
+  email: "",
+
+  //cover letter
+  coverLetterFileName: "",
+  coverLetterJobDescription: "",
+  coverLetterResult: "",
+  coverLetterLoading: false,
 };
 
 const userInputSlice = createSlice({
@@ -44,8 +50,41 @@ const userInputSlice = createSlice({
     resetInputs: (state) => {
       Object.assign(state, initialState); // Reset to initial state
     },
+
+    //for cover letter
+    setCoverLetterFileName: (state, action) => {
+      state.coverLetterFileName = action.payload;
+    },
+    setCoverLetterJobDescription: (state, action) => {
+      state.coverLetterJobDescription = action.payload;
+    },
+    setCoverLetterResult: (state, action) => {
+      state.coverLetterResult = action.payload;
+    },
+    setCoverLetterLoading: (state, action) => {
+      state.coverLetterLoading = action.payload;
+    },
+    resetCoverLetterFields: (state) => {
+      state.coverLetterFileName = "";
+      state.coverLetterJobDescription = "";
+      state.coverLetterResult = "";
+      state.coverLetterLoading = false;
+    },
+
+
   },
 });
 
-export const { setResumeFile, setJobDescription, setScanResult, resetInputs } = userInputSlice.actions;
+export const {
+  setResumeFile,
+  setJobDescription,
+  setScanResult,
+  resetInputs,
+  setCoverLetterFileName,
+  setCoverLetterJobDescription,
+  setCoverLetterResult,
+  setCoverLetterLoading,
+  resetCoverLetterFields,
+} = userInputSlice.actions;
+
 export default userInputSlice.reducer;

@@ -1,71 +1,238 @@
-.footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+.progress-footer {
+  background: #13191d;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 0;
+  font-size: 15px;
+}
+
+.pf-main {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0 0 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.pf-section {
+  margin-right: 32px;
+}
+
+.pf-transformation {
+  flex: 2 1 350px;
+  min-width: 320px;
+  margin-bottom: 24px;
+}
+
+.pf-transformation h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+/* ASH COLOR + SMALL FONT for sub/descriptive text */
+.pf-desc {
+  color: #b8c0c8;
+  font-size: 13px;
+  margin-bottom: 28px; /* <-- More space after the intro description */
+}
+
+.pf-feature-group p {
+  color: #b8c0c8;
+  font-size: 13px;
+  margin-bottom: 10px; /* default for all */
+}
+
+.pf-features-row {
+  display: flex;
+  gap: 32px;
+}
+
+.pf-feature-group {
+  min-width: 170px;
+  margin-right: 16px;
+}
+
+/* Add extra space after the last p in each group */
+.pf-feature-group p:last-child {
+  margin-bottom: 28px; /* more space at the end of each feature column */
+}
+
+.pf-feature-title {
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.pf-links, .pf-about {
+  min-width: 120px;
+}
+
+.pf-links-title, .pf-about-title {
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.pf-links ul,
+.pf-about ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pf-links ul li,
+.pf-about ul li {
+  margin-bottom: 7px;
+}
+
+.pf-links ul li a,
+.pf-about ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+/* Hover color for links */
+.pf-links ul li a:hover,
+.pf-about ul li a:hover {
+  color: #40bcf4;
+}
+
+.pf-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-width: 180px;
+  margin-top: 0;
+}
+
+.pf-contact-btn {
+  background: transparent;
+  border: 2px solid #40bcf4;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 38px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pf-contact-btn:hover {
+  background: #40bcf4;
+  color: #13191d;
+}
+
+.pf-phone {
+  color: #b8c0c8;
+  font-size: 13px;
+}
+
+.pf-lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 36px auto 0 auto;
+  padding: 0 0 16px 0;
+  border-top: 1px solid #1d2326;
+  font-size: 14px;
+}
+
+.pf-logo {
+  width: 90px;           /* Make width and height equal for square */
+  height: 90px;
+  margin-right: 14px;
+  vertical-align: middle;
+}
+
+.pf-lower-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pf-policies a {
+  color: #fff;
+  margin: 0 3px;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pf-policies a:hover {
+  text-decoration: underline;
+  color: #40bcf4;
+}
+
+.pf-copyright {
+  color: #b8c0c8;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.pf-lower-social {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-right: 10px;
+}
+
+.pf-lower-social a {
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.pf-lower-social a:hover {
+  color: #40bcf4;
+  opacity: 1;
+}
+
+.pf-powered {
+  text-align: right;
+  color: #fff;
+  font-size: 13px;
+  padding: 0 40px 12px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.pf-sitefinity {
+  color: #40bcf4;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pf-main {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px 0 16px;
   }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  .pf-section, .pf-contact {
+    align-items: flex-start !important;
+    margin-right: 0;
   }
-  
-  .footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin: 10px;
+  .pf-contact {
+    align-items: flex-start;
+    margin-top: 18px;
   }
-  
-  .footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #fff;
-    display: inline-block;
-    padding-bottom: 5px;
+  .pf-lower, .pf-powered {
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    margin: 5px 0;
-  }
-  
-  .footer-section ul li a {
-    color: #ddd;
-    text-decoration: none;
-  }
-  
-  .footer-section ul li a:hover {
-    color: #fff;
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .social-icons a img {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-  }
-  
-  .social-icons a img:hover {
-    transform: scale(1.1);
-  }
-  
-  .footer-bottom {
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: #111;
-  }
-  
+}

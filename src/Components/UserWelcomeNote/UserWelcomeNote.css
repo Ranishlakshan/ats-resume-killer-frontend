@@ -1,82 +1,82 @@
 .welcome-note-container {
-    background-color: #f8fbfe;
-    padding: 50px;
-    margin: 50px;
+    background-color: #fff; /* White background */
+    padding: 50px 30px;
+    margin: 10px auto;
     border-radius: 8px;
-    /* max-width: 1200px; */
-    margin: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-  }
+    max-width: 90%;
+}
 
-  .double-line {
-    display: flex;
-  }
-  
-  .header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 18px;
     font-weight: bold;
     color: #1d2939;
     display: flex;
     align-items: center;
-  }
-  
-  .lock-icon {
+}
+
+.lock-icon {
     margin-right: 8px;
-  }
-  
-  .close-button {
+}
+
+.close-button {
     background: none;
     border: none;
     font-size: 18px;
     cursor: pointer;
     color: #333;
-  }
-  
-  .content {
-    margin-top: 10px;
-    padding-inline: 30px;
-    
-    margin-inline: 30px;
+}
+
+.content {
     display: flex;
-  }
-  
-  .section {
-    margin-bottom: 15px;
-  }
-  
-  h3 {
+    gap: 48px; /* Large gap between columns */
+    margin-top: 24px;
+    justify-content: center;
+}
+
+.section-col {
+    flex: 1 1 0;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Space between section blocks in one column */
+}
+
+.section {
+    margin-bottom: 0;
+}
+
+h3 {
     font-size: 16px;
     font-weight: bold;
     color: #1d2939;
-  }
-  
-  ul {
+    margin-bottom: 7px;
+}
+
+ul {
     list-style: none;
     padding: 0;
-  }
-  
-  li {
+}
+
+li {
     font-size: 14px;
     margin: 5px 0;
     display: flex;
     align-items: center;
-  }
-  
-  a {
+}
+
+a {
     color: #007bff;
     text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+}
 
-  
-  
+a:hover {
+    text-decoration: underline;
+}

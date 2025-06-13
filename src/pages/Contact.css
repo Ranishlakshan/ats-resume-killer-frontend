@@ -1,0 +1,149 @@
+.contact-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  padding: 60px 32px 40px 32px;
+  margin-top: 100px;
+  margin-bottom: 48px;
+}
+
+.contact-info-panel {
+  flex: 1;
+  min-width: 270px;
+  max-width: 350px;
+  padding-right: 10px;
+}
+
+.contact-info-panel h1 {
+  font-size: 2rem;
+  color: #16804a;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.contact-detail {
+  margin-bottom: 22px;
+  font-size: 1rem;
+}
+
+.contact-detail a {
+  color: #16804a;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.social-links {
+  margin-top: 7px;
+  display: flex;
+  gap: 16px;
+}
+
+.social-links img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: grayscale(0.3);
+  transition: filter 0.18s;
+}
+
+.social-links img:hover {
+  filter: grayscale(0) brightness(1.2);
+}
+
+.contact-form-panel {
+  flex: 1;
+  min-width: 270px;
+  max-width: 420px;
+  padding-left: 10px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #f9fafb;
+  padding: 24px 18px 20px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(30,128,74,0.04);
+}
+
+.contact-form h2 {
+  font-size: 1.2rem;
+  color: #16804a;
+  font-weight: 700;
+  margin-bottom: 7px;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #16804a;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 11px 13px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.3px solid #e3e3e3;
+  background: #fafbfc;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #02a161;
+}
+
+.contact-btn {
+  background: #02a161;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 12px 0;
+  font-weight: 700;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-btn:hover {
+  background: #16804a;
+}
+
+.thankyou-msg {
+  margin-top: 16px;
+  color: #16804a;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .contact-main-container {
+    flex-direction: column;
+    gap: 18px;
+    padding: 50px 8px 35px 8px;
+  }
+  .contact-info-panel, .contact-form-panel {
+    max-width: 100%;
+    padding: 0;
+  }
+  .contact-form {
+    padding: 20px 6px 16px 6px;
+  }
+}

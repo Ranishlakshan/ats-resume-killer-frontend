@@ -47,12 +47,12 @@ const UserOutput = () => {
                 <td>{skill}</td>
                 <td>
                   {hardskillsre.includes(skill) ? (
-                    <span className="green-check">✅</span>
+                    <span className="modern-check"></span>
                   ) : (
-                    <span className="red-cross">❌</span>
+                    <span className="modern-cross"></span>
                   )}
                 </td>
-                <td><span className="green-check">✅</span></td>
+                <td><span className="modern-check"></span></td>
               </tr>
             ))}
           </tbody>
@@ -60,6 +60,7 @@ const UserOutput = () => {
       </div>
     );
   };
+  
   
 
   // Function to render the soft skills comparison table
@@ -80,12 +81,12 @@ const UserOutput = () => {
                 <td>{skill}</td>
                 <td>
                   {softskillsre.includes(skill) ? (
-                    <span className="green-check">✅</span>
+                    <span className="modern-check"></span>
                   ) : (
-                    <span className="red-cross">❌</span>
+                    <span className="modern-cross"></span>
                   )}
                 </td>
-                <td><span className="green-check">✅</span></td>
+                <td><span className="modern-check"></span></td>
               </tr>
             ))}
           </tbody>
@@ -93,6 +94,7 @@ const UserOutput = () => {
       </div>
     );
   };
+  
   
 
   // Function to render the keywords comparison table
@@ -113,12 +115,12 @@ const UserOutput = () => {
                 <td>{keyword}</td>
                 <td>
                   {keywordsre.includes(keyword) ? (
-                    <span className="green-check">✅</span>
+                    <span className="modern-check"></span>
                   ) : (
-                    <span className="red-cross">❌</span>
+                    <span className="modern-cross"></span>
                   )}
                 </td>
-                <td><span className="green-check">✅</span></td>
+                <td><span className="modern-check"></span></td>
               </tr>
             ))}
           </tbody>
@@ -126,6 +128,7 @@ const UserOutput = () => {
       </div>
     );
   };
+  
   
 
   // Function to highlight matching jdre in the extracted resume text
@@ -355,12 +358,23 @@ const UserOutput = () => {
 
               {/* Displaying the Percentage of Matching Keywords */}
               <div className="contact-section">
-                <h3>💡 Keywords Comparison</h3>
-                <p>
-                  Out of <strong>{keywordsjd.length}</strong> keywords in the job description, you have <strong>{matchingKeywords}</strong> matching keywords in your resume. Try to add more keywords from here.
-                </p>
+                <div className="score-container">
+                  <div className="score-label">
+                    <CircularProgressbar
+                      value={matchingKeywordsPercentage}
+                      text={`${matchingKeywordsPercentage}%`}
+                    />
+                  </div>
+                  <div className="skills-comparison">
+                    <h3>💡 Keywords Comparison</h3>
+                    <p>
+                      Out of <strong>{keywordsjd.length}</strong> keywords in the job description, you have <strong>{matchingKeywords}</strong> matching keywords in your resume. Try to add more keywords from here.
+                    </p>
+                  </div>
+                </div>
                 {renderKeywordsTable()}
               </div>
+
 
               {/* Extracted Resume Text at the End */}
               <div className="resume-section">

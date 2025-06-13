@@ -2,11 +2,11 @@
 .user-input-container {
   background: white;
   
-  margin: 60px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
-  text-align: center;
+  /* margin: 60px auto; */
+  /* padding: 30px; */
+  /* border-radius: 12px; */
+  /* box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15); */
+  text-align: middle;
 }
 
 h2.new-scan {
@@ -19,16 +19,18 @@ h2.new-scan {
 /* Input Sections */
 .input-sections {
   display: flex;
+  margin-inline: 5%;
+
   
-  gap: 20px;
+  /* gap: 20px; */
 }
 
 /* Input Boxes - Paper Style */
 .input-box {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  /* padding: 20px; */
+  /* border-radius: 8px; */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   width: 100%;
   min-height: 300px;
@@ -39,7 +41,7 @@ h2.new-scan {
   font-size: 18px;
   font-weight: 600;
   color: #444;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 /* Resume & Job Description as Vertical Paper */
@@ -81,19 +83,33 @@ textarea {
   background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
+  padding: 9px 26px;         /* Smaller, modern padding */
+  font-size: 15px;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 15px;
-  width: 100%;
+  /* margin-top: 15px;  remove if not needed */
+  width: auto;               /* No more 100% width */
+  min-width: 100px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.07);
 }
-
 .scan-button:hover {
   background: linear-gradient(135deg, #0056b3, #004494);
 }
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between; /* Left & right alignment */
+  align-items: center;
+  margin-top: 18px;
+  margin-bottom: 0;
+  padding-left: 5%;
+  width: 95%;
+}
+
+
+
 
 /* Loading Popup */
 .loading-popup {
@@ -143,4 +159,23 @@ textarea {
   textarea {
     font-size: 14px;
   }
+}
+
+
+.file-input-wrapper {
+  min-height: 200px;           /* Increase for more height */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;    /* Vertically center */
+  border: 1.5px solid #ddd;   /* Match your textarea border */
+  border-radius: 8px;
+  padding: 16px 14px;
+  background: #fff;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  transition: border 0.2s;
+}
+
+.file-input-wrapper:focus-within {
+  border-color: #2496ff;      /* Highlight on focus */
 }

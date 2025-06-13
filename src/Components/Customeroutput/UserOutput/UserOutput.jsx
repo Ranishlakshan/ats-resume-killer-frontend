@@ -10,6 +10,9 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase"; // adjust the path if needed
+import HeaderContent from "../../HeaderContent/HeaderContent";
+
+import Footer from "../../Footer/Footer";
 
 
 
@@ -167,8 +170,11 @@ const UserOutput = () => {
 
     // Function to wrap matched words/phrases with span
     const highlightWords = (words, className) => {
-      words.forEach((phrase) => {
-        const regex = new RegExp(`\\b${phrase}\\b`, "gi"); // Case-insensitive matching
+      // Force `words` to always be an array, even if it's not.
+      (Array.isArray(words) ? words : [words]).forEach((phrase) => {
+        // Guard against empty/null/undefined values inside
+        if (!phrase) return;
+        const regex = new RegExp(`\\b${phrase}\\b`, "gi");
         highlightedText = highlightedText.replace(regex, (match) =>
           `<span class="${className}">${match}</span>`
         );
@@ -268,15 +274,17 @@ const UserOutput = () => {
   
 
   return (
-    <div className="container">
+    <div className="app-layout">
+      <HeaderContent/>
+      <div className="container">
       <Sidebar />
       <div className="user-output-content">
         {/* <h2>Here is your Resume Scan Result</h2> */}
         <div className="output-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <h2 style={{ margin: 0 }}>Here is your Resume Scan Result</h2>
-          <button onClick={handleLogout} className="logout-btn">
+          {/* <h2 style={{ margin: 0 }}>Here is your Resume Scan Result</h2> */}
+          {/* <button onClick={handleLogout} className="logout-btn">
             Log out
-          </button>
+          </button> */}
         </div>
         <MatchScoreComponent overallScore={overallScore} />
         <div className="tabs">
@@ -427,8 +435,10 @@ const UserOutput = () => {
             </div>
           )}
         </div>
-        <button onClick={() => navigate("/")}>Go Back</button>
+        {/* <button onClick={() => navigate("/")}>Go Back</button> */}
       </div>
+    </div>
+      <Footer/>
     </div>
   );
 };
