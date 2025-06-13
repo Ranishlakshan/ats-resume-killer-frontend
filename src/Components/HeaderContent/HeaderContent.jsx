@@ -112,7 +112,7 @@ function HeaderContent() {
         />
       </div>
       <nav className="navbar">
-        {menu.map((main, idx) => (
+        {/* {menu.map((main, idx) => (
           <div className="dropdown" key={idx}>
             <span className="menu-link-text main-menu">{main.name}</span>
             <div className="dropdown-content">
@@ -127,7 +127,46 @@ function HeaderContent() {
               ))}
             </div>
           </div>
-        ))}
+        ))} */}
+
+        {menu.map((main, idx) => {
+          // Make Recruiter Solutions non-clickable
+          const isDisabled = main.name === "Recruiter Solutions";
+          return (
+            <div className={`dropdown${isDisabled ? " disabled-dropdown" : ""}`} key={idx}>
+              <span
+                className={`menu-link-text main-menu${isDisabled ? " disabled-tab" : ""}`}
+                // Optional: add a tooltip
+                title={isDisabled ? "Coming soon!" : undefined}
+                style={{
+                  cursor: isDisabled ? "not-allowed" : "pointer",
+                  color: isDisabled ? "#bbb" : undefined, // gray out
+                  opacity: isDisabled ? 0.7 : 1,
+                  pointerEvents: isDisabled ? "none" : undefined,
+                }}
+              >
+                {main.name}
+              </span>
+              {/* Only show dropdown for enabled tabs */}
+              {!isDisabled && (
+                <div className="dropdown-content">
+                  {main.sublinks.map((sublink, subidx) => (
+                    <a
+                      className="dropdown-link"
+                      href={sublink.url}
+                      key={subidx}
+                    >
+                      {sublink.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {/* end of recruiter features */}
+        
       </nav>
       <div className="header-actions">
         {user ? (

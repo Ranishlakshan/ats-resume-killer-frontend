@@ -2,6 +2,8 @@ import React from 'react'
 import './WelcomeCustomer.css'
 import UserInput from '../UserInput/UserInput'
 import UserWelcomeNote from '../../UserWelcomeNote/UserWelcomeNote'
+import CustomerReview from '../../CustomerReview/CustomerReview';
+
 
 function WelcomeCustomer() {
 
@@ -71,7 +73,7 @@ function WelcomeCustomer() {
           </div>
         </div>
 
-    
+        <CustomerReview />
 
         <UserWelcomeNote />
         
