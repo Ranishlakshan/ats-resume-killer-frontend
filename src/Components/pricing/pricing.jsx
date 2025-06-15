@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import HeaderContent from "../HeaderContent/HeaderContent";
 import Footer from "../Footer/Footer";
 import { auth, db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const Pricing = () => {
   const navigate = useNavigate();
@@ -28,6 +28,23 @@ const Pricing = () => {
 
     return () => unsub();
   }, []);
+
+  const switchToFree = async () => {
+    try {
+      if (auth.currentUser) {
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(userRef, {
+          subscription: "free",
+          updatedAt: new Date().toISOString(),
+        });
+        setSubscription("free");
+        alert("Switched to Free Plan successfully.");
+      }
+    } catch (error) {
+      console.error("Failed to switch plan:", error);
+      alert("Error switching to Free Plan. Please try again.");
+    }
+  };
 
   return (
     <div>
@@ -53,7 +70,7 @@ const Pricing = () => {
               {subscription === "free" ? (
                 <button className="current-plan">Current Plan</button>
               ) : (
-                <button className="subscribe" onClick={() => navigate("/")}>Switch</button>
+                <button className="subscribe" onClick={switchToFree}>Switch</button>
               )}
               <p className="note">Free Forever</p>
             </div>
@@ -72,7 +89,7 @@ const Pricing = () => {
           </div>
 
           <div className="features-table">
-            {/* Future features */}
+            {/* Future feature table can go here */}
           </div>
         </main>
       </div>
