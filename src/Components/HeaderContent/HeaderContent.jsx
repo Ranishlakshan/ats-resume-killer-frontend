@@ -6,7 +6,6 @@ import ProfileDropdown from './ProfileDropdown';
 import './HeaderContent.css';
 import { useNavigate } from 'react-router-dom';
 
-// Define your menu structure in an array:
 const menu = [
   {
     name: "Resume & Cover Letter Tools",
@@ -69,7 +68,10 @@ const menu = [
 function HeaderContent() {
   const [user, setUser] = useState(null);
   const [subscription, setSubscription] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -111,51 +113,28 @@ function HeaderContent() {
           className="header-logo-img"
         />
       </div>
-      <nav className="navbar">
-        {/* {menu.map((main, idx) => (
-          <div className="dropdown" key={idx}>
-            <span className="menu-link-text main-menu">{main.name}</span>
-            <div className="dropdown-content">
-              {main.sublinks.map((sublink, subidx) => (
-                <a
-                  className="dropdown-link"
-                  href={sublink.url}
-                  key={subidx}
-                >
-                  {sublink.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        ))} */}
-
+      <button className="mobile-menu-toggle" onClick={toggleMenu}>☰</button>
+      <nav className="navbar desktop-navbar">
         {menu.map((main, idx) => {
-          // Make Recruiter Solutions non-clickable
           const isDisabled = main.name === "Recruiter Solutions";
           return (
             <div className={`dropdown${isDisabled ? " disabled-dropdown" : ""}`} key={idx}>
               <span
                 className={`menu-link-text main-menu${isDisabled ? " disabled-tab" : ""}`}
-                // Optional: add a tooltip
                 title={isDisabled ? "Coming soon!" : undefined}
                 style={{
                   cursor: isDisabled ? "not-allowed" : "pointer",
-                  color: isDisabled ? "#bbb" : undefined, // gray out
+                  color: isDisabled ? "#bbb" : undefined,
                   opacity: isDisabled ? 0.7 : 1,
                   pointerEvents: isDisabled ? "none" : undefined,
                 }}
               >
                 {main.name}
               </span>
-              {/* Only show dropdown for enabled tabs */}
               {!isDisabled && (
                 <div className="dropdown-content">
                   {main.sublinks.map((sublink, subidx) => (
-                    <a
-                      className="dropdown-link"
-                      href={sublink.url}
-                      key={subidx}
-                    >
+                    <a className="dropdown-link" href={sublink.url} key={subidx}>
                       {sublink.label}
                     </a>
                   ))}
@@ -164,9 +143,6 @@ function HeaderContent() {
             </div>
           );
         })}
-
-        {/* end of recruiter features */}
-        
       </nav>
       <div className="header-actions">
         {user ? (
@@ -184,6 +160,41 @@ function HeaderContent() {
           </button>
         )}
       </div>
+
+      {/* Mobile Drawer */}
+      <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
+        <nav className="mobile-menu-inner">
+          {menu.map((main, idx) => {
+            const isDisabled = main.name === "Recruiter Solutions";
+            return (
+              <div className={`dropdown${isDisabled ? " disabled-dropdown" : ""}`} key={idx}>
+                <span
+                  className={`menu-link-text main-menu${isDisabled ? " disabled-tab" : ""}`}
+                  title={isDisabled ? "Coming soon!" : undefined}
+                  style={{
+                    cursor: isDisabled ? "not-allowed" : "pointer",
+                    color: isDisabled ? "#bbb" : undefined,
+                    opacity: isDisabled ? 0.7 : 1,
+                    pointerEvents: isDisabled ? "none" : undefined,
+                  }}
+                >
+                  {main.name}
+                </span>
+                {!isDisabled && (
+                  <div className="dropdown-content">
+                    {main.sublinks.map((sublink, subidx) => (
+                      <a className="dropdown-link" href={sublink.url} key={subidx}>
+                        {sublink.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
+      </div>
+      {menuOpen && <div className="menu-backdrop" onClick={toggleMenu}></div>}
     </header>
   );
 }

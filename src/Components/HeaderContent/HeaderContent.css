@@ -193,3 +193,148 @@
     max-width: 200px;
   }
 }
+
+
+
+/* --- for responsive mobile support --- */
+
+/* Base hamburger menu styles */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Hidden menu in mobile by default */
+.navbar.mobile-hidden {
+  display: none;
+}
+
+/* Visible menu in mobile when toggled */
+.navbar.mobile-visible {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .header-logo {
+    margin-bottom: 12px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    color:black;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .main-menu {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown-content {
+    position: static;
+    display: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+    background: #f9f9f9;
+  }
+
+  .dropdown-link {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .header-actions {
+    margin-top: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+/* Only show desktop navbar in desktop view */
+@media (max-width: 768px) {
+  .desktop-navbar {
+    display: none !important;
+  }
+}
+
+/* Mobile drawer panel */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+  padding: 20px;
+  z-index: 999;
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.mobile-drawer.open {
+  right: 0;
+}
+
+/* Overlay background when drawer is open */
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,0.4);
+  z-index: 998;
+}
+
+/* Reset layout for drawer items */
+.mobile-menu-inner .dropdown {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mobile-menu-inner .dropdown-content {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  background: none;
+  padding-left: 10px;
+}

@@ -35,13 +35,13 @@ function Contact() {
           <div className="contact-detail">
             <strong>Follow us:</strong>
             <div className="social-links">
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/company/brew-my-job/" target="_blank" rel="noopener noreferrer">
                 <img src="/images/linkedin-icon.png" alt="LinkedIn" />
               </a>
               <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
                 <img src="/images/twitter-icon.png" alt="Twitter" />
               </a>
-              <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/profile.php?id=61577352324297" target="_blank" rel="noopener noreferrer">
                 <img src="/images/facebook-icon.png" alt="Facebook" />
               </a>
               {/* Add more as needed */}

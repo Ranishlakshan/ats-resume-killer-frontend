@@ -67,7 +67,7 @@
   margin-bottom: 28px;
   margin-left: 5%;
   width: 100%;
-  /* max-width: 750px; */
+  max-width: 1200px;
 }
 
 /* Inputs row */
@@ -144,7 +144,7 @@ textarea:focus {
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
   margin-top: 24px;
   width: 100%;
-  /* max-width: 750px; */
+  max-width: 750px;
   text-align: left;
 }
 
