@@ -172,3 +172,20 @@ th {
     padding: 10px 4px;
   }
 }
+
+/* button active and current plan  */
+
+.current-plan {
+  background: #e4e4e4;
+  color: #333;
+  cursor: default;
+}
+
+.subscribe {
+  background: #2563eb;
+  color: white;
+}
+
+.subscribe:hover {
+  background: #1e4ed8;
+}
