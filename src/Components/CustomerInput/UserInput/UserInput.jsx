@@ -209,7 +209,7 @@ const UserInput = () => {
           display: "block",
           margin: "0 auto 24px auto",
           maxWidth: "850px",
-          width: "100%",
+          width: "90%",
           height: "auto"
         }}
       />

@@ -89,10 +89,10 @@ From analysis to action, BrewMyJob brings you the insights and documents you nee
         </div>
         
         <div className="pf-lower-social">
-          <a href="#"><img src="/icons/facebook.png" alt="Facebook" width="24" height="24" /></a>
+          <a href="https://www.facebook.com/profile.php?id=61577352324297"><img src="/icons/facebook.png" alt="Facebook" width="24" height="24" /></a>
           <a href="#"><img src="/icons/twitter.png" alt="Twitter" width="24" height="24" /></a>
           <a href="#"><img src="/icons/youtube.png" alt="YouTube" width="24" height="24" /></a>
-          <a href="#"><img src="/icons/linkedin.png" alt="LinkedIn" width="24" height="24" /></a>
+          <a href="https://www.linkedin.com/company/brew-my-job/"><img src="/icons/linkedin.png" alt="LinkedIn" width="24" height="24" /></a>
         </div>
 
       </div>

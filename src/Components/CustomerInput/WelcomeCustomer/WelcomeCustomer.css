@@ -216,3 +216,76 @@
 .robot-btn:hover {
   background-color: #0366b6;
 }
+
+
+/* --- mobile view --- */
+
+@media (max-width: 768px) {
+  .cover-overlay,
+  .feature-overlay,
+  .robot-overlay {
+    position: static;
+    transform: none;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    text-align: left;
+    box-shadow: none;
+  }
+
+  .cover-title,
+  .feature-title,
+  .robot-title {
+    font-size: 1.6rem;
+    max-width: 100%;
+    text-shadow: none;
+  }
+
+  .cover-tagline,
+  .feature-tagline,
+  .robot-tagline {
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 10px;
+    box-shadow: none;
+    background: none;
+    max-width: 100%;
+  }
+
+  .cover-btn,
+  .robot-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .feature-overlay,
+  .robot-overlay {
+    align-items: flex-start;
+  }
+
+  .feature-image,
+  .robot-image,
+  .cover-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  .feature-title,
+  .robot-title {
+    margin-top: 15px;
+  }
+
+  .feature-image-wrapper,
+  .robot-image-wrapper,
+  .cover-image-wrapper {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .main-wrapper {
+    padding-top: 60px;
+  }
+}
