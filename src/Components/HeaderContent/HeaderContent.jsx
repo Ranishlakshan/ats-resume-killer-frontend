@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth, db } from '../../firebase';
+import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { auth, provider, db } from '../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import ProfileDropdown from './ProfileDropdown';
 import './HeaderContent.css';
@@ -100,8 +100,24 @@ function HeaderContent() {
     navigate("/");
   };
 
-  const handleSignIn = () => {
-    navigate("/login");
+  const handleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      if (!userDocSnap.exists()) {
+        await setDoc(userDocRef, {
+          email: user.email,
+          subscription: "free",
+          updatedAt: new Date().toISOString(),
+          resumeScan: 3,
+          coverLetterScan: 3,
+        });
+      }
+    } catch (error) {
+      alert("Google Sign-In error: " + error.message);
+    }
   };
 
   return (
@@ -161,7 +177,6 @@ function HeaderContent() {
         )}
       </div>
 
-      {/* Mobile Drawer */}
       <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
         <nav className="mobile-menu-inner">
           {menu.map((main, idx) => {
