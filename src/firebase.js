@@ -4,7 +4,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "key", // fill with your Firebase project credentials
+  apiKey: "AIzaSyAe3coCFibxWyVwVeX_WYhQGjGixyLw_JE", // fill with your Firebase project credentials
   authDomain: "ats-killer-canada.firebaseapp.com",
   projectId: "ats-killer-canada",
   // ...other keys as provided in your Firebase console

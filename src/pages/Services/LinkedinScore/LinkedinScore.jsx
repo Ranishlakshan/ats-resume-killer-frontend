@@ -14,7 +14,7 @@ function LinkedinScore() {
     setLoading(true);
     setResultHtml('');
     try {
-      const response = await fetch('http://localhost:8080/api/analyze-linkedin-profile', {
+      const response = await fetch('https://api.brewmyjob.com/api/analyze-linkedin-profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

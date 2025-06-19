@@ -36,7 +36,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/payment/create-payment-intent",
+        "https://api.brewmyjob.com/api/payment/create-payment-intent",
         {
           amount: 2499, // $24.99 in cents
           currency: "usd",
