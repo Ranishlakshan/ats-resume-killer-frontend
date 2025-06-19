@@ -159,7 +159,7 @@ const UserInput = () => {
 
   try {
     // Await the backend API call
-    const response = await axios.post("http://localhost:8080/api/scan", formData, {
+    const response = await axios.post("https://api.brewmyjob.com/api/scan", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

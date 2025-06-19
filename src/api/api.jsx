@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendUserData = async (data) => {
   try {
-    const response = await axios.post("http://localhost:8080/api/scan", data, {
+    const response = await axios.post("https://api.brewmyjob.com/api/scan", data, {
       headers: { "Content-Type": "application/json" },
     });
     console.log("Success:", response.data);

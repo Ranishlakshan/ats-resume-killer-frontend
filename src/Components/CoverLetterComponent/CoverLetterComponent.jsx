@@ -91,7 +91,7 @@ function CoverLetterComponent() {
     }, 500);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/generate-cover-letter", formData, {
+      const response = await axios.post("https://api.brewmyjob.com/api/generate-cover-letter", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
