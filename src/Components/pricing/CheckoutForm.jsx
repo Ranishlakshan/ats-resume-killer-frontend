@@ -38,7 +38,7 @@ const CheckoutForm = () => {
       const response = await axios.post(
         "https://api.brewmyjob.com/api/payment/create-payment-intent",
         {
-          amount: 2499, // $24.99 in cents
+          amount: 2499,
           currency: "usd",
         },
         {
@@ -80,15 +80,17 @@ const CheckoutForm = () => {
     }
 
     try {
-      // 1. Get clientSecret from backend
       console.log("Requesting payment intent from backend...");
       const clientSecret = await createPaymentIntent();
       console.log("Received clientSecret:", clientSecret);
 
-      // 2. Confirm card payment
       const cardElement = elements.getElement(CardElement);
+
       const { paymentIntent, error: stripeError } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: { card: cardElement },
+        payment_method: {
+          card: cardElement,
+          billing_details: { name: 'Customer Name' }, // ✅ ADDED
+        },
       });
 
       if (stripeError) {
@@ -97,7 +99,6 @@ const CheckoutForm = () => {
         return;
       }
 
-      // 3. After payment, update Firestore and handle errors clearly
       if (paymentIntent && paymentIntent.status === "succeeded") {
         const user = auth.currentUser;
         console.log("Checking if user is signed in...");
@@ -106,14 +107,9 @@ const CheckoutForm = () => {
           try {
             await updateUserSubscription(user);
           } catch (firestoreErr) {
-            console.error(
-              "Payment succeeded, but failed to update subscription:",
-              firestoreErr
-            );
-            setError(
-              "Payment succeeded, but failed to update subscription: " +
-                (firestoreErr.message || firestoreErr)
-            );
+            console.error("Payment succeeded, but failed to update subscription:", firestoreErr);
+            setError("Payment succeeded, but failed to update subscription: " +
+              (firestoreErr.message || firestoreErr));
             setProcessing(false);
             return;
           }

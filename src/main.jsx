@@ -22,6 +22,17 @@ import Store from './store/store';  // Import the store
 import Pricing from "./../src/Components/pricing/pricing.jsx";
 import PaymentPage from "./../src/Components/pricing/PaymentPage.jsx";
 
+
+//Seo articles
+import ATSResumeArticle from './pages/Sources/WhatisanATS-1/WhatisanATS-1.jsx';
+import TopResumeToolsArticle from './pages/Sources/TopResumeToolsArticle-2/TopResumeToolsArticle-2.jsx';
+import ResumeRejectionArticle from './pages/Sources/ResumeRejectionArticle-3/ResumeRejectionArticle.jsx';
+import TailorResumeArticle from './pages/Sources/TailorResumeArticle-4/TailorResumeArticle.jsx';
+import BestATSFormatsArticle from './pages/Sources/BestATSFormatsArticle-5/BestATSFormatsArticle.jsx';
+import CoverLetterArticle from './pages/Sources/CoverLetterAIArticle-6/CoverLetterAIArticle.jsx';
+import ResumeCheckerComparison from './pages/Sources/ResumeCheckerComparisonArticle-7/ResumeCheckerComparisonArticle.jsx';
+import ImproveATSScoreArticle from './pages/Sources/ImproveATSScoreArticle-8/ImproveATSScoreArticle.jsx';
+
 //services
 import LinkedinScore from './pages/Services/LinkedinScore/LinkedinScore.jsx';
 
@@ -95,6 +106,38 @@ const router = createBrowserRouter([
   {
     path: "/linkedin-optimization",
     element: <LinkedinScore />,
+  },
+  {
+    path: "/what-is-an-ats-and-how-to-beat-it-in-2025",
+    element: <ATSResumeArticle />,
+  },
+  {
+    path: "/best-free-resume-tools-to-use-before-applying-jobs-in-2025",
+    element: <TopResumeToolsArticle />,
+  },
+  {
+    path: "/why-your-resume-keeps-getting-rejected-and-how-to-fix-it",
+    element: <ResumeRejectionArticle />,
+  },
+  {
+    path: "/how-to-tailor-your-resume-to-a-job-description-step-by-step",
+    element: <TailorResumeArticle />,
+  },
+  {
+    path: "/best-resume-formats-that-work-with-ats-systems",
+    element: <BestATSFormatsArticle />,
+  },
+  {
+    path: "/how-to-write-a-cover-letter-in-2025-using-ai",
+    element: <CoverLetterArticle />,
+  },
+  {
+    path: "/free-resume-checker-vs-paid-tools-which-one-should-you-use-in-2025",
+    element: <ResumeCheckerComparison />,
+  },
+  {
+    path: "/how-to-improve-your-resume-ats-score-in-10-minutes-in-2025",
+    element: <ImproveATSScoreArticle />,
   },
 ]);
 

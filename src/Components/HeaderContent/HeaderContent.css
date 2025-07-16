@@ -250,6 +250,7 @@
   .subscription-badge {
     position: static;
     margin-right: 8px;
+    
     font-size: 12px;
     padding: 3px 10px;
   }
